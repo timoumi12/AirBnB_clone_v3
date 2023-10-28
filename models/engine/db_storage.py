@@ -88,17 +88,4 @@ class DBStorage:
 
     def count(self, cls=None):
         '''class (optional)'''
-        obj_dict = {}
-        if cls:
-            obj_class = self.__session.query(classes.get(cls)).all()
-            for item in obj_class:
-                obj_dict[item.id] = item
-            return len(obj_dict)
-        else:
-            for cls_name in classes:
-                if cls_name == 'BaseModel':
-                    continue
-                obj_class = self.__session.query(classes.get(cls_name)).all()
-                for item in obj_class:
-                    obj_dict[item.id] = item
-            return len(obj_dict)
+        return (len(self.all(cls)))
