@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """app.py file"""
 from flask import Flask, Blueprint, render_template
+from flask import jsonify
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -9,12 +10,11 @@ from os import getenv
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
-
 @app.teardown_appcontext
 def teardown(exception):
     """calls close()"""
     storage.close()
-
+    
 @app.errorhandler(404)
 def page_not_found(error):
     """error handler"""
