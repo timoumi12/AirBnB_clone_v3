@@ -71,7 +71,7 @@ class FileStorage:
 
     def get(self, cls, id):
         """returns object"""
-        objects = models.storage.all(cls)
+        objects = self.all(cls)
         for value in objects.values():
             if (value.id == id):
                 return value
