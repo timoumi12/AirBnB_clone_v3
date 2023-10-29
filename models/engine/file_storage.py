@@ -71,13 +71,11 @@ class FileStorage:
 
     def get(self, cls, id):
         """returns object"""
-        '''object to get'''
-        if cls and id:
-            takeObj = '{}.{}'.format(cls, id)
-            everyObj = self.all(cls)
-            return everyObj.get(takeObj)
-        else:
-            return None
+        objects = models.storage.all(cls)
+        for value in objects.values():
+            if (value.id == id):
+                return value
+        return None
 
     def count(self, cls=None):
         """returns number of objects"""
