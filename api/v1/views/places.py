@@ -62,7 +62,7 @@ def POST_request_places(city_id):
     user_id = data['user_id']
     user = storage.get(User, user_id)
     if user is None:
-        abort(4040)
+        abort(404)
     if 'name' not in data:
         abort(400)
         return abort(400, {'message': 'Missing name'})
